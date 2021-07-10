@@ -1,0 +1,18 @@
+%Code for Homogeneous Transformation Matrix
+clear all
+alpha = input("Enter RPY - Alpha value: ");
+beta = input("Enter RPY - Beta: ");
+gamma = input("Enter RPY - gamma: ");
+pos = zeros(3,1);
+pos(1,1) = input("What is your translation along x-axis?");
+pos(2,1) = input("What is your translation along y-axis?");
+pos(3,1) = input("What is your translation along z-axis?");
+
+Rotz_alpha = rotz(alpha, 'deg');
+Roty_beta = roty(beta, 'deg');
+Rotx_gamma = rotx(gamma, 'deg');
+
+Rot_mat = Rotz_alpha*Roty_beta*Rotx_gamma
+tripleangle(Rot_mat, 'eul')
+
+HMT = vertcat(horzcat(Rot_mat,pos),[0 0 0 1])
